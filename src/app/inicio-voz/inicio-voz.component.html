@@ -1,3 +1,8 @@
-<p>
-  inicio-voz works!
-</p>
+<div>
+  <button (click)="escuchar()">Escuchar</button>
+</div>
+<div *ngIf="textoEscuchado">
+    Hola {{textoEscuchado}} <br>
+    Deseas iniciar el juego ?
+  <button routerLink="/nivel">Si</button>
+</div>

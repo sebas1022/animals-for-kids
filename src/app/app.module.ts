@@ -8,22 +8,23 @@ import { InicioVozComponent } from './inicio-voz/inicio-voz.component';
 import { NivelComponent } from './nivel/nivel.component';
 import { JuegoComponent } from './juego/juego.component';
 import { ResultadosComponent } from './resultados/resultados.component';
+import { SpeechService } from './services/speech.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    InicioVozComponent,
-    NivelComponent,
-    JuegoComponent,
-    ResultadosComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+	declarations: [
+		AppComponent,
+		HomeComponent,
+		InicioVozComponent,
+		NivelComponent,
+		JuegoComponent,
+		ResultadosComponent
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule
+	],
+	providers: [SpeechService],
+	bootstrap: [AppComponent],
+	schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
