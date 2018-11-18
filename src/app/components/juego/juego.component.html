@@ -1,20 +1,41 @@
-<p>
-	¿Que animal escuchaste?
-</p>
-<div *ngFor="let animal of animales">
-	<div [ngClass]="{'gris': animal.adivinado}">
-		{{animal.nombre}} |
-		<img src="{{animal.image}}">
-		<button (click)="seleccionarAnimal(animal.nombre)">Seleccionar</button>
-	</div>
-	<br>
-</div>
-<div *ngIf="adivino === 'SI'">
-	Muy bien perrito
-	<button (click)="siguiente()">Siguente</button>	
-</div>
+<div class="cont-all-default">
+    <!--Intento-->
+    <div class="cont-sound-animal" style="display: none;">
+        <p class="text-intro-app">
+            ¿Preparado?
+        </p>
+        <p class="text-intro-app time">
+            2:00
+        </p>
+        <div class="cont-btn-micro">
+            <button class="btn-default-app btn-micro-app">
+                <img class="img-responsive" src="assets/images/icon-img-speaker.png" alt="">
+            </button>
+        </div>
+        <button class="btn-default-app btn-left" (click)="sonidoAnimal()">Repetir</button>
+    </div>
+     <!--Opciones-->
+    <div>
+        <p class="text-intro-app">
+            ¿Que animal escuchaste?
+        </p>
+        <div class="cont-btn-animals">
+            <div class="btn-animals" *ngFor="let animal of animales">
+                <div [ngClass]="{'gris': animal.adivinado}">
+                    <button (click)="seleccionarAnimal(animal.nombre)">
+                        <img class="img-responsive" src="{{animal.image}}">
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="adivino === 'SI'">
+            Muy bien perrito
+            <button (click)="siguiente()">Siguente</button>
+        </div>
 
-<div *ngIf="adivino === 'NO'">
-	En la mala perrito
-	<button (click)="sonidoAnimal()">Volver A Escuchar</button>	
+        <div *ngIf="adivino === 'NO'">
+            En la mala perrito
+            <button (click)="sonidoAnimal()">Volver A Escuchar</button>
+        </div>
+    </div>
 </div>
