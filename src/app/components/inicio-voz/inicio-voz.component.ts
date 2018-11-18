@@ -15,6 +15,7 @@ export class InicioVozComponent implements OnInit {
 	error;
 	constructor(private hablador: SpeechService, private cd: ChangeDetectorRef) { }
 	ngOnInit() {
+		// const {SpeechRecognition}: IWindow = <IWindow>window;
 		const {webkitSpeechRecognition}: IWindow = <IWindow>window;
 		this.recognition = new webkitSpeechRecognition();
 		this.recognition.lang = 'es-CO';
@@ -33,6 +34,7 @@ export class InicioVozComponent implements OnInit {
 			this.recognizing = true;
 			this.textoEscuchado = undefined;
 		}
+		this.cd.detectChanges();
 	}
 	reconocer(listen) {
 		for (let i = listen.resultIndex; i < listen.results.length; i++) {
@@ -42,8 +44,12 @@ export class InicioVozComponent implements OnInit {
 			}
 		}
 		if (!this.recognizing && this.textoEscuchado !== undefined) {
-			this.hablador.habla('Hola ' + this.textoEscuchado);
+			this.hablador.habla('Hola, ' + this.textoEscuchado + '. ¿Listo Para Jugar?');
 			this.cd.detectChanges();
 		}
+	}
+	repito() {
+		this.textoEscuchado = undefined;
+		this.cd.detectChanges();
 	}
 }
