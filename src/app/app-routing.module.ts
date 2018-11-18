@@ -11,16 +11,34 @@ import { ResultadosComponent } from './components/resultados/resultados.componen
 
 const routes: Routes = [
     {
-        path: '', pathMatch: 'full', redirectTo: 'home'},
-        { path: 'home', component: HomeComponent},
-        { path: 'inicia', component: InicioVozComponent},
-        { path: 'nivel', component: NivelComponent},
-        { path: 'juego/:num', component: JuegoComponent},
-        { path: 'resultado', component: ResultadosComponent},
-    ];
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'home'
+    },
+    {
+        path: 'home',
+        component: HomeComponent
+    },
+    {
+        path: 'inicia',
+        component: InicioVozComponent
+    },
+    {
+        path: 'nivel',
+        component: NivelComponent
+    },
+    {
+        path: 'juego/:num',
+        component: JuegoComponent
+    },
+    {
+        path: 'resultado',
+        component: ResultadosComponent
+    }
+];
 
-    @NgModule({
-        imports: [RouterModule.forRoot(routes)],
-        exports: [RouterModule]
-    })
-    export class AppRoutingModule { }
+@NgModule({
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
+})
+export class AppRoutingModule { }

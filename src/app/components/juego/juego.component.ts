@@ -11,11 +11,12 @@ import { SpeechService } from '../../services/speech.service';
 })
 export class JuegoComponent implements OnInit, OnDestroy  {
 	num: number;
-	animalAdivinar: string;
 	adivino: string;
+	animalAdivinar: any;
 	private sub: any;
 	private intento: number;
 	public animales: any;
+	animalesDisponibles: any;
 
 	constructor(private route: ActivatedRoute, private hablador: SpeechService, private cd: ChangeDetectorRef) {}
 
@@ -37,21 +38,32 @@ export class JuegoComponent implements OnInit, OnDestroy  {
 
 	sonidoAnimal() {
 		this.adivino = 'ND';
-		const sonido = new Audio(this.animales[this.intento].audioUrl);
+		this.animalesDisponibles = this.animales.filter(function(animal) { return !animal.adivinado; });
+		const numAnimal = this.getRndInteger(0, this.animalesDisponibles.length);
+		this.animalAdivinar = this.animalesDisponibles[numAnimal];
+		const sonido = new Audio(this.animalAdivinar.audioUrl);
 		sonido.play();
-		this.animalAdivinar = this.animales[this.intento].nombre;
 		setTimeout(function(){
 			sonido.pause();
 		}, 3000);
 	}
 
-	seleccionarAnimal(animal) {
-		if (this.animalAdivinar === animal) {
+	seleccionarAnimal(nombre) {
+		if (this.animalAdivinar.nombre === nombre) {
 			this.adivino = 'SI';
+			this.animales.filter(function(animal) { return animal.nombre === nombre; })[0].adivinado = true;
 		} else {
 			this.adivino = 'NO';
 		}
-		console.log(this.adivino);
 		this.cd.detectChanges();
+	}
+
+	siguiente() {
+		this.intento = +1;
+		this.sonidoAnimal();
+	}
+
+	private getRndInteger(min, max) {
+		return Math.floor(Math.random() * (max - min) ) + min;
 	}
 }
