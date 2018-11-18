@@ -1,22 +1,22 @@
 <div class="cont-all-default">
     <p class="text-intro-app">Selecciona la cantidad
-            de animaless que quieres adivinar.</p>
+            de animales que quieres adivinar.</p>
     <div class="cont-btn-level">
-        <button class="btn-default-app btn-micro-app" [routerLink]="['/juego/3']">
+        <button class="btn-default-app btn-micro-app" (click)="irNivel(3)">
             <img class="img-responsive pato" src="assets/images/img-btn-pato.png" alt="">
         </button>
         <p class="text-btn-level morado-c">3<br>animales</p>
     </div>
     <hr class="division-btn">
     <div class="cont-btn-level">
-        <button class="btn-default-app btn-micro-app" [routerLink]="['/juego/6']">
+        <button class="btn-default-app btn-micro-app"  (click)="irNivel(6)">
             <img class="img-responsive tortuga" src="assets/images/img-btn-tortuga.png" alt="">
         </button>
         <p class="text-btn-level morado-m">6<br>animales</p>
     </div>
     <hr class="division-btn">
     <div class="cont-btn-level">
-        <button class="btn-default-app btn-micro-app" [routerLink]="['/juego/9']">
+        <button class="btn-default-app btn-micro-app"  (click)="irNivel(9)">
             <img class="img-responsive delfin" src="assets/images/img-btn-delfin.png" alt="">
         </button>
         <p class="text-btn-level morado-d">9<br>animales</p>

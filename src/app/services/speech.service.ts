@@ -5,23 +5,44 @@ import { SWindow } from 'app/interfaces/swindow';
 
 @Injectable()
 export class SpeechService {
-	private msg;
-	private speach;
-
-	constructor() {
-		const {SpeechSynthesisUtterance}: SWindow = <SWindow>window;
-		this.msg = new SpeechSynthesisUtterance();
-		this.msg.volumen = 1;
-		this.msg.rate = 1;
-		this.msg.voiceURI = 'native';
-		this.msg.pitch = 0.8;
-		this.msg.lang = 'es-CO';
-		this.speach = window.speechSynthesis;
-	}
+	constructor() { }
 
 	habla(txt): void {
-		this.msg.voice = this.speach.getVoices().filter(function(voice) { return voice.name === 'Google español'; })[0];
-		this.msg.text = txt;
-		this.speach.speak(this.msg);
+		const lang = 'es-ES'
+		const voiceIndex = 51;
+
+		const speak = async text => {
+			if (!speechSynthesis) {
+				return
+			}
+			const {SpeechSynthesisUtterance}: SWindow = <SWindow>window;
+			const message = new SpeechSynthesisUtterance(text)
+			message.voice = await chooseVoice()
+			speechSynthesis.speak(message)
+		}
+
+		const getVoices = () => {
+			return new Promise(resolve => {
+				let voices = speechSynthesis.getVoices()
+				if (voices.length) {
+					resolve(voices)
+					return
+				}
+				speechSynthesis.onvoiceschanged = () => {
+					voices = speechSynthesis.getVoices()
+					resolve(voices)
+				}
+			})
+		}
+
+		const chooseVoice = async () => {
+			const voices = (await getVoices())
+
+			return new Promise(resolve => {
+				resolve(voices[voiceIndex])
+			})
+		}
+
+		speak(txt);
 	}
 }
