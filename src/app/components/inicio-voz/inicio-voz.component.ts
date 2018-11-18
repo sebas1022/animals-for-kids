@@ -2,15 +2,11 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 
 import { IWindow } from '../../interfaces/iwindow';
 import { SpeechService } from '../../services/speech.service';
-import { MICROANIMATION } from './inicio-voz.animation';
 
 @Component({
 	selector: 'app-inicio-voz',
 	templateUrl: './inicio-voz.component.html',
-	styleUrls: ['./inicio-voz.component.styl'],
-	animations: [
-		MICROANIMATION
-	]
+	styleUrls: ['./inicio-voz.component.styl']
 })
 export class InicioVozComponent implements OnInit {
 	recognition;
@@ -38,6 +34,7 @@ export class InicioVozComponent implements OnInit {
 			this.recognizing = true;
 			this.textoEscuchado = undefined;
 		}
+		this.cd.detectChanges();
 	}
 	reconocer(listen) {
 		for (let i = listen.resultIndex; i < listen.results.length; i++) {
@@ -47,8 +44,12 @@ export class InicioVozComponent implements OnInit {
 			}
 		}
 		if (!this.recognizing && this.textoEscuchado !== undefined) {
-			this.hablador.habla('Hola ' + this.textoEscuchado);
+			this.hablador.habla('Hola, ' + this.textoEscuchado + '. ¿Listo Para Jugar?');
 			this.cd.detectChanges();
 		}
+	}
+	repito() {
+		this.textoEscuchado = undefined;
+		this.cd.detectChanges();
 	}
 }
