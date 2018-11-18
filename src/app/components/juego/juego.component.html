@@ -2,18 +2,19 @@
 	¿Que animal escuchaste?
 </p>
 <div *ngFor="let animal of animales">
-	<div>
+	<div [ngClass]="{'gris': animal.adivinado}">
 		{{animal.nombre}} |
 		<img src="{{animal.image}}">
 		<button (click)="seleccionarAnimal(animal.nombre)">Seleccionar</button>
 	</div>
 	<br>
 </div>
-{{adivino}}
 <div *ngIf="adivino === 'SI'">
-    Muy bien perrito
+	Muy bien perrito
+	<button (click)="siguiente()">Siguente</button>	
 </div>
 
 <div *ngIf="adivino === 'NO'">
 	En la mala perrito
+	<button (click)="sonidoAnimal()">Volver A Escuchar</button>	
 </div>

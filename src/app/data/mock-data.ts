@@ -2,7 +2,7 @@
 export class DataAnimales {
 	public static DATA_ANIMALES = {
 		animales: [
-			/*{
+			{
 				nombre: 'perro',
 				image: '/assets/images/animales/perro.png',
 				audioUrl: '/assets/audio/perro.mp3',
@@ -13,7 +13,7 @@ export class DataAnimales {
 				image: '/assets/images/animales/gatito.png',
 				audioUrl: '/assets/audio/gatito.mp3',
 				adivinado: false
-			},*/
+			},
 			{
 				nombre: 'caballo',
 				image: '/assets/images/animales/caballo.png',
