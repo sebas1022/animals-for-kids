@@ -1,6 +1,8 @@
-import { Component, OnInit, OnDestroy} from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
 import { DataAnimales } from '../../data/mock-data';
+import { SpeechService } from '../../services/speech.service';
 
 @Component({
 	selector: 'app-juego',
@@ -9,11 +11,13 @@ import { DataAnimales } from '../../data/mock-data';
 })
 export class JuegoComponent implements OnInit, OnDestroy  {
 	num: number;
+	animalAdivinar: string;
+	adivino: string;
 	private sub: any;
 	private intento: number;
 	public animales: any;
 
-	constructor(private route: ActivatedRoute) {}
+	constructor(private route: ActivatedRoute, private hablador: SpeechService, private cd: ChangeDetectorRef) {}
 
 	ngOnInit() {
 		this.sub = this.route.params.subscribe(params => {
@@ -32,10 +36,22 @@ export class JuegoComponent implements OnInit, OnDestroy  {
 	}
 
 	sonidoAnimal() {
-		console.log(this.animales[this.intento])
+		this.adivino = 'ND';
+		const sonido = new Audio(this.animales[this.intento].audioUrl);
+		sonido.play();
+		this.animalAdivinar = this.animales[this.intento].nombre;
+		setTimeout(function(){
+			sonido.pause();
+		}, 3000);
 	}
 
 	seleccionarAnimal(animal) {
-		console.log(animal);
+		if (this.animalAdivinar === animal) {
+			this.adivino = 'SI';
+		} else {
+			this.adivino = 'NO';
+		}
+		console.log(this.adivino);
+		this.cd.detectChanges();
 	}
 }
