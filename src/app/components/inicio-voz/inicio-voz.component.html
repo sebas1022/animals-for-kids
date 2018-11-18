@@ -1,8 +1,28 @@
-<div>
-  <button (click)="escuchar()">Escuchar</button>
+<div class="cont-cloud-l cloud-1">
+        <img class="img-responsive" src="assets/images/bkg-img-nube-l.png" alt="">
 </div>
-<div *ngIf="textoEscuchado">
-    Hola {{textoEscuchado}} <br>
-    Deseas iniciar el juego ?
-  <button routerLink="/nivel">Si</button>
+<div class="cont-cloud-r cloud-2">
+        <img class="img-responsive" src="assets/images/bkg-img-nube-r.png" alt="">
+</div>
+<div class="cont-cloud-l cloud-3">
+        <img class="img-responsive" src="assets/images/bkg-img-nube-l.png" alt="">
+</div>
+<div class="cont-cloud-r cloud-4">
+        <img class="img-responsive" src="assets/images/bkg-img-nube-r.png" alt="">
+</div>
+
+<div class="cont-all-default">
+    <p class="text-intro-app">
+        Oprime el botón y di tu nombre.
+    </p>
+    <div class="cont-btn-micro">
+        <button class="btn-micro-app" (click)="escuchar()">
+            <img src="assets/images/icon-img-micro.png" alt="">
+        </button>
+    </div>
+    <div *ngIf="textoEscuchado">
+        Hola {{textoEscuchado}} <br>
+        Deseas iniciar el juego ?
+    <button routerLink="/nivel">Si</button>
+    </div>
 </div>

@@ -1,1 +1,78 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Concert+One')
+@import 'app/default.styl'
+
+body
+    background rgba(255,255,255,1)
+    background radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(104,205,251,1) 42%, rgba(88,181,252,1) 100%)
+    font-family $concert
+    height 100vh
+    margin 0
+    overflow-x hidden
+    position relative
+    padding 0
+
+
+.cont-sol-bkg
+    position absolute
+    left 25%
+    top 0
+    width 50%
+    z-index -1
+
+.cont-cloud-l
+.cont-cloud-r
+    position absolute
+    width 24%
+    z-index -1
+
+.cloud-1
+    left -16px
+    top 20%
+
+.cloud-2
+    left 8%
+    top 24%
+
+.cloud-3
+    right -16px
+    top 20%
+
+.cloud-4
+    right 6%
+    top 24%
+
+.img-responsive
+    width 100%
+
+//-Fin Fondo
+.cont-all-default
+    margin 0 auto
+    width 90%
+
+.text-intro-app
+    color $blanco
+    text-align center
+
+//-Botones
+.btn-default-app
+    background $rojo-m
+    border 6px solid $blanco
+    border-radius 16px
+    box-shadow  0px 4px 0px $rojo-d
+    color $blanco
+    font-family $concert
+    font-size 2rem
+    line-height 2rem
+    padding 0 0 14px
+    transition 0.2s ease-in
+    width 100%
+
+    &:hover
+        background $rojo-d
+        box-shadow  0px 4px 0px $rojo-m
+
+.btn-micro-app
+    background $rojo-m
+    border 6px solid $blanco
+    border-radius 100%
