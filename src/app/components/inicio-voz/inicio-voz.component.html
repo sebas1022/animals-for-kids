@@ -1,28 +1,30 @@
-<div class="cont-cloud-l cloud-1">
-        <img class="img-responsive" src="assets/images/bkg-img-nube-l.png" alt="">
-</div>
-<div class="cont-cloud-r cloud-2">
-        <img class="img-responsive" src="assets/images/bkg-img-nube-r.png" alt="">
-</div>
-<div class="cont-cloud-l cloud-3">
-        <img class="img-responsive" src="assets/images/bkg-img-nube-l.png" alt="">
-</div>
-<div class="cont-cloud-r cloud-4">
-        <img class="img-responsive" src="assets/images/bkg-img-nube-r.png" alt="">
-</div>
-
 <div class="cont-all-default">
-    <p class="text-intro-app">
-        Oprime el botón y di tu nombre.
-    </p>
-    <div class="cont-btn-micro">
-        <button class="btn-micro-app" (click)="escuchar()">
-            <img src="assets/images/icon-img-micro.png" alt="">
-        </button>
+    <!--Grabar-->
+    <div>
+        <p class="text-intro-app">
+            Oprime el botón y di tu nombre.
+        </p>
+        <div class="cont-btn-micro">
+            <button class="btn-default-app btn-micro-app" (click)="escuchar()">
+                <img class="img-responsive" src="assets/images/icon-img-micro.png" alt="">
+            </button>
+        </div>
     </div>
+
+    <!--Repetir *ngIf="textoEscuchado"-->
     <div *ngIf="textoEscuchado">
-        Hola {{textoEscuchado}} <br>
-        Deseas iniciar el juego ?
-    <button routerLink="/nivel">Si</button>
+        <p class="text-intro-app">
+            Hola, {{textoEscuchado}}<br>
+            Listo para jugar?
+        </p>
+        <div class="cont-btn-micro">
+            <button class="btn-default-app btn-micro-app" (click)="escuchar()">
+                <img class="img-responsive" src="assets/images/icon-img-micro.png" alt="">
+            </button>
+        </div>
+        <div class="cont-btn-double">
+            <button class="btn-default-app btn-left" (click)="escuchar()">Repetir</button>
+            <button class="btn-default-app" routerLink="/nivel">Continuar</button>
+        </div>
     </div>
 </div>
