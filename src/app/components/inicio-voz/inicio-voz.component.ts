@@ -2,11 +2,15 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 
 import { IWindow } from '../../interfaces/iwindow';
 import { SpeechService } from '../../services/speech.service';
+import { MICROANIMATION } from './inicio-voz.animation';
 
 @Component({
 	selector: 'app-inicio-voz',
 	templateUrl: './inicio-voz.component.html',
-	styleUrls: ['./inicio-voz.component.styl']
+	styleUrls: ['./inicio-voz.component.styl'],
+	animations: [
+		MICROANIMATION
+	]
 })
 export class InicioVozComponent implements OnInit {
 	recognition;
@@ -15,6 +19,7 @@ export class InicioVozComponent implements OnInit {
 	error;
 	constructor(private hablador: SpeechService, private cd: ChangeDetectorRef) { }
 	ngOnInit() {
+		// const {SpeechRecognition}: IWindow = <IWindow>window;
 		const {webkitSpeechRecognition}: IWindow = <IWindow>window;
 		this.recognition = new webkitSpeechRecognition();
 		this.recognition.lang = 'es-CO';
