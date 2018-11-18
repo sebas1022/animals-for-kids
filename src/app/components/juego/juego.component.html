@@ -1,3 +1,11 @@
 <p>
-  juego works!
+	¿Que animal escuchaste?
 </p>
+<div *ngFor="let animal of animales">
+	<div>
+		{{animal.nombre}} |
+		<img src="{{animal.image}}">
+		<button (click)="seleccionarAnimal(animal.nombre)">Seleccionar</button>
+	</div>
+	<br>
+</div>

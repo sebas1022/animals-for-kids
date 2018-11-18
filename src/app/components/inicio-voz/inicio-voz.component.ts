@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 
-import { IWindow } from '../interfaces/iwindow';
-import { SpeechService } from '../services/speech.service';
+import { IWindow } from '../../interfaces/iwindow';
+import { SpeechService } from '../../services/speech.service';
 
 @Component({
 	selector: 'app-inicio-voz',

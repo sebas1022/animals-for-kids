@@ -15,7 +15,7 @@ const routes: Routes = [
         { path: 'home', component: HomeComponent},
         { path: 'inicia', component: InicioVozComponent},
         { path: 'nivel', component: NivelComponent},
-        { path: 'juego', component: JuegoComponent},
+        { path: 'juego/:num', component: JuegoComponent},
         { path: 'resultado', component: ResultadosComponent},
     ];
 
