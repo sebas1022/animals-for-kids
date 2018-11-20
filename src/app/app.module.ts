@@ -9,6 +9,8 @@ import { NivelComponent } from './components/nivel/nivel.component';
 import { JuegoComponent } from './components/juego/juego.component';
 import { ResultadosComponent } from './components/resultados/resultados.component';
 import { SpeechService } from './services/speech.service';
+import { ResultadosService } from './services/resultados.service';
+
 import { FooterComponent } from './layouts/footer/footer.component';
 import { HeaderComponent } from './layouts/header/header.component';
 
@@ -27,7 +29,7 @@ import { HeaderComponent } from './layouts/header/header.component';
 		BrowserModule,
 		AppRoutingModule
 	],
-	providers: [SpeechService],
+	providers: [SpeechService, ResultadosService],
 	bootstrap: [AppComponent],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

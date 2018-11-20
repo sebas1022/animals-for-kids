@@ -2,16 +2,10 @@
     <p class="text-intro-app">
         RESULTADOS
     </p>
-
     <div class="cont-list-result">
-        <!--*ngFor="let result of results"-->
-        <div class="list-result">
-            <img class="img-responsive" src="assets/images/animales/gatito.png" alt="">
-            <i class="icon-answer wrong"></i>
-        </div>
-        <div class="list-result">
-                <img class="img-responsive" src="assets/images/animales/pato.png" alt="">
-                <i class="icon-answer correct"></i>
+        <div class="list-result" *ngFor="let animal of animales">
+            <img class="img-responsive" src="{{animal.image}}" alt="">
+            <i class="icon-answer" [ngClass]="animal.adivinado? 'correct' : 'wrong'"></i>
         </div>
     </div>
     <button class="btn-default-app"  routerLink="/nivel">Inicio</button>

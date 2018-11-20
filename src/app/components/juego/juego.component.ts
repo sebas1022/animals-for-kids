@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { DataAnimales } from '../../data/mock-data';
 import { SpeechService } from '../../services/speech.service';
+import { ResultadosService } from '../../services/resultados.service';
 
 @Component({
 	selector: 'app-juego',
@@ -19,7 +20,12 @@ export class JuegoComponent implements OnInit, OnDestroy  {
 	public animales: any;
 	animalesDisponibles: any;
 
-	constructor(private route: ActivatedRoute, private hablador: SpeechService, private cd: ChangeDetectorRef, private router: Router) {}
+	constructor(
+		private route: ActivatedRoute,
+		private hablador: SpeechService,
+		private cd: ChangeDetectorRef,
+		private router: Router,
+		private resultados: ResultadosService) {}
 
 	ngOnInit() {
 		this.sub = this.route.params.subscribe(params => {
@@ -52,12 +58,14 @@ export class JuegoComponent implements OnInit, OnDestroy  {
 		} else {
 			this.finalJuego();
 		}
+		this.cd.detectChanges();
+
 	}
 
 	seleccionarAnimal(nombre) {
 		if (this.animalAdivinar.nombre === nombre) {
 			this.adivino = 'SI';
-			this.hablador.habla('MUY BIEN PERRITO');
+			this.hablador.habla('MUY BIEN');
 			this.animales.filter(function(animal) { return animal.nombre === nombre; })[0].adivinado = true;
 		} else {
 			this.adivino = 'NO';
@@ -81,6 +89,7 @@ export class JuegoComponent implements OnInit, OnDestroy  {
 	}
 
 	finalJuego() {
+		this.resultados.guardaResultado(this.animales);
 		this.router.navigate(['/resultado'])
 	}
 
