@@ -1,32 +1,24 @@
 <div class="cont-all-default">
     <!--Intento-->
     <div class="cont-sound-animal">
-        <p class="text-intro-app">
-            ¿Preparado?
-        </p>
         <p class="text-intro-app time">
-            2:00
-        </p>
-        <div class="cont-btn-micro">
-            <button class="btn-default-app btn-micro-app">
-                <img class="img-responsive" src="assets/images/icon-img-speaker.png" alt="">
-            </button>
-        </div>
-        <button class="btn-default-app btn-left" (click)="sonidoAnimal()">Repetir</button>
+            <span id="timer" #Timer>2:00</span>
+		</p>
     </div>
      <!--Opciones-->
-    <div>
+    <div *ngIf="adivino === 'ND'">
         <p class="text-intro-app">
             ¿Que animal escuchaste?
         </p>
         <div class="cont-btn-animals">
             <div class="btn-animals" *ngFor="let animal of animales">
-                <div [ngClass]="{'gris': animal.adivinado}">
+                <div *ngIf="!animal.adivinado">
                     <button class="btn-animal" (click)="seleccionarAnimal(animal.nombre)">
                         <img class="img-responsive" src="{{animal.image}}">
                     </button>
                 </div>
-            </div>
+			</div>
+			<button class="btn-default-app btn-left" (click)="repetir()">Repetir</button>
         </div>
     </div>
 </div>
@@ -56,7 +48,7 @@
 
         <div class="cont-face-result">
             <img class="img-responsive" src="assets/images/img-icon-sad.png" alt="">
-        </div>
-        <button class="btn-default-app" (click)="sonidoAnimal()">Volver A Escuchar</button>
+		</div>
+        <button class="btn-default-app" (click)="repetir()">Volver A Escuchar</button>
     </div>
 </div>
