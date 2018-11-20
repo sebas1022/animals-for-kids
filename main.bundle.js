@@ -403,9 +403,8 @@ module.exports = module.exports.toString();
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__data_mock_data__ = __webpack_require__("../../../../../src/app/data/mock-data.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_speech_service__ = __webpack_require__("../../../../../src/app/services/speech.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_resultados_service__ = __webpack_require__("../../../../../src/app/services/resultados.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_speech_service__ = __webpack_require__("../../../../../src/app/services/speech.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_resultados_service__ = __webpack_require__("../../../../../src/app/services/resultados.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return JuegoComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -416,7 +415,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
 
 
 
@@ -435,10 +433,7 @@ var JuegoComponent = (function () {
             _this.num = +params['num']; // (+) converts string 'num' to a number
         });
         this.intento = 0;
-        this.animales = __WEBPACK_IMPORTED_MODULE_2__data_mock_data__["a" /* DataAnimales */].DATA_ANIMALES.animales.sort(function () {
-            return .5 - Math.random();
-        });
-        this.animales = this.animales.splice(0, this.num);
+        this.animales = this.resultados.getAnimales(this.num);
         this.sonidoAnimal();
         this.contador();
     };
@@ -533,7 +528,7 @@ JuegoComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/components/juego/juego.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/juego/juego.component.styl")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__services_speech_service__["a" /* SpeechService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_speech_service__["a" /* SpeechService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["r" /* ChangeDetectorRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["r" /* ChangeDetectorRef */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__services_resultados_service__["a" /* ResultadosService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_resultados_service__["a" /* ResultadosService */]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_speech_service__["a" /* SpeechService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_speech_service__["a" /* SpeechService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["r" /* ChangeDetectorRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["r" /* ChangeDetectorRef */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__services_resultados_service__["a" /* ResultadosService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_resultados_service__["a" /* ResultadosService */]) === "function" && _e || Object])
 ], JuegoComponent);
 
 var _a, _b, _c, _d, _e;
@@ -662,7 +657,6 @@ var ResultadosComponent = (function () {
     }
     ResultadosComponent.prototype.ngOnInit = function () {
         this.animales = this.resultados.getResultado();
-        console.log(this.animales);
     };
     return ResultadosComponent;
 }());
@@ -696,68 +690,68 @@ DataAnimales.DATA_ANIMALES = {
     animales: [
         {
             nombre: 'perro',
-            image: '/assets/images/animales/perro.png',
-            audioUrl: '/assets/audio/perro.mp3',
+            image: 'assets/images/animales/perro.png',
+            audioUrl: 'assets/audio/perro.mp3',
             adivinado: false
         },
         {
             nombre: 'gatito',
-            image: '/assets/images/animales/gatito.png',
-            audioUrl: '/assets/audio/gatito.mp3',
+            image: 'assets/images/animales/gatito.png',
+            audioUrl: 'assets/audio/gato.mp3',
             adivinado: false
         },
         {
             nombre: 'caballo',
-            image: '/assets/images/animales/caballo.png',
-            audioUrl: '/assets/audio/caballo.mp3',
+            image: 'assets/images/animales/caballo.png',
+            audioUrl: 'assets/audio/caballo.mp3',
             adivinado: false
         },
         {
             nombre: 'cerdo',
-            image: '/assets/images/animales/cerdo.png',
-            audioUrl: '/assets/audio/cerdo.mp3',
+            image: 'assets/images/animales/cerdo.png',
+            audioUrl: 'assets/audio/cerdo.mp3',
             adivinado: false
         },
         {
             nombre: 'vaca',
-            image: '/assets/images/animales/vaca.png',
-            audioUrl: '/assets/audio/vaca.mp3',
+            image: 'assets/images/animales/vaca.png',
+            audioUrl: 'assets/audio/vaca.mp3',
             adivinado: false
         },
         {
             nombre: 'elefante',
-            image: '/assets/images/animales/elefante.png',
-            audioUrl: '/assets/audio/elefante.mp3',
+            image: 'assets/images/animales/elefante.png',
+            audioUrl: 'assets/audio/elefante.mp3',
             adivinado: false
         },
         {
             nombre: 'pato',
-            image: '/assets/images/animales/pato.png',
-            audioUrl: '/assets/audio/pato.mp3',
+            image: 'assets/images/animales/pato.png',
+            audioUrl: 'assets/audio/pato.mp3',
             adivinado: false
         },
         {
             nombre: 'leon',
-            image: '/assets/images/animales/leon.png',
-            audioUrl: '/assets/audio/leon.mp3',
+            image: 'assets/images/animales/leon.png',
+            audioUrl: 'assets/audio/leon.mp3',
             adivinado: false
         },
         {
             nombre: 'lobo',
-            image: '/assets/images/animales/lobo.png',
-            audioUrl: '/assets/audio/lobo.mp3',
+            image: 'assets/images/animales/lobo.png',
+            audioUrl: 'assets/audio/lobo.mp3',
             adivinado: false
         },
         {
             nombre: 'pajaro',
-            image: '/assets/images/animales/pajaro.png',
-            audioUrl: '/assets/audio/pajaro.mp3',
+            image: 'assets/images/animales/pajaro.png',
+            audioUrl: 'assets/audio/pajaro.mp3',
             adivinado: false
         },
         {
             nombre: 'grillo',
-            image: '/assets/images/animales/grillo.png',
-            audioUrl: '/assets/audio/grillo.mp3',
+            image: 'assets/images/animales/grillo.png',
+            audioUrl: 'assets/audio/grillo.mp3',
             adivinado: false
         }
     ]
@@ -893,6 +887,9 @@ HeaderComponent = __decorate([
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_observable_of__ = __webpack_require__("../../../../rxjs/add/observable/of.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_observable_of__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__data_mock_data__ = __webpack_require__("../../../../../src/app/data/mock-data.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ResultadosService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -904,9 +901,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var ResultadosService = (function () {
     function ResultadosService() {
     }
+    ResultadosService.prototype.getAnimales = function (num) {
+        this.animales = __WEBPACK_IMPORTED_MODULE_2__data_mock_data__["a" /* DataAnimales */].DATA_ANIMALES.animales.sort(function () {
+            return .5 - Math.random();
+        });
+        this.animales = this.animales.splice(0, num);
+        return this.animales;
+    };
     ResultadosService.prototype.guardaResultado = function (result) {
         this.resultados = result;
     };
